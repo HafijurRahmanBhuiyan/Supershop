@@ -1,183 +1,271 @@
 # 🛍️ SuperShop — Full-Stack MERN eCommerce Platform
 
-A modern, responsive, and feature-rich full-stack eCommerce application built using the **MERN** stack (MongoDB, Express.js, React.js, Node.js) and powered by **Vite**.
+A production-ready, full-stack eCommerce application built with the **MERN Stack** (MongoDB, Express.js, React.js, Node.js). SuperShop features secure user authentication, a professional admin dashboard, shopping cart functionality, and a modern responsive frontend.
 
 ---
 
-## 🚀 Features
+## ✨ What's New (September 2026)
 
-### 💻 Frontend (React + Vite)
-- **Responsive & Modern UI:** Optimized for all screen sizes (mobile, tablet, and desktop) with smooth animations and transitions.
-- **Hero Slider:** Auto-rotating promotional banner slider with custom controls.
-- **Flash Deals with Live Countdown:** Real-time countdown timer for limited-time offers.
-- **Category Filter Tabs:** Dynamic category switching for new arrivals (Fashion, Electronics, Home, etc.).
-- **Interactive Shopping Cart:** Real-time cart state with toast notifications on item addition.
-- **Floating Controls:** Back-to-top scroll button and hamburger menu for mobile devices.
+This is a **fully functional full-stack application** with real authentication, not just a frontend prototype:
 
-### ⚙️ Backend (Node.js + Express + MongoDB)
-- **RESTful API Architecture:** Clean, modular structure separating models, routes, controllers, and middleware.
-- **User Authentication:** Secure JWT (JSON Web Tokens) and password hashing with `bcryptjs`.
-- **Role-Based Access Control:** Separate permissions for regular users and administrators.
-- **Product Management:** Full CRUD capabilities for products with filtering and keyword search.
-- **Persistent Cart System:** Database-backed cart management synchronized with user accounts.
-- **Order & Payment Processing:** Stripe integration for handling secure online checkout sessions and order state updates.
-
----
-
-## 📁 Project Structure
-
-```text
-supershop/
-├── client/                     # Frontend React application (Vite)
-│   ├── public/                 # Static public assets
-│   ├── src/
-│   │   ├── App.jsx             # Main interactive SuperShop React component
-│   │   ├── App.css             # Component-level styles
-│   │   ├── index.css           # Global design system, variables & media queries
-│   │   └── main.jsx            # React root entry point
-│   ├── index.html              # HTML shell with Google Fonts & FontAwesome
-│   ├── package.json            # Frontend dependencies & scripts
-│   └── vite.config.js          # Vite configuration
-│
-├── server/                     # Backend Node.js / Express API
-│   ├── config/
-│   │   └── db.js               # MongoDB connection handler
-│   ├── controllers/            # Request handlers & business logic
-│   │   ├── authController.js
-│   │   ├── cartController.js
-│   │   ├── orderController.js
-│   │   └── productController.js
-│   ├── middleware/             # Auth protection & error handlers
-│   │   ├── authMiddleware.js
-│   │   └── errorHandler.js
-│   ├── models/                 # Mongoose schemas
-│   │   ├── Cart.js
-│   │   ├── Order.js
-│   │   ├── Product.js
-│   │   └── User.js
-│   ├── routes/                 # Express API endpoints
-│   │   ├── auth.js
-│   │   ├── cart.js
-│   │   ├── orders.js
-│   │   └── products.js
-│   ├── utils/                  # Token generators & Stripe utilities
-│   │   ├── generateToken.js
-│   │   └── stripe.js
-│   ├── .env                    # Environment configuration
-│   ├── package.json            # Backend dependencies & scripts
-│   └── server.js               # Express application entry point
-│
-├── index.html                  # Original standalone prototype HTML
-├── style.css                   # Original standalone prototype CSS
-├── main.js                     # Original standalone prototype JS
-└── README.md                   # Project documentation
-```
+- ✅ **Real User Authentication** — JWT-based login/registration with secure password hashing
+- ✅ **Role-Based Access Control** — Admin and regular user roles with protected routes
+- ✅ **Professional Admin Dashboard** — Manage products, orders, and users
+- ✅ **Persistent Shopping Cart** — Cart data stored in MongoDB
+- ✅ **Redux State Management** — Centralized auth and cart state
+- ✅ **RESTful API Integration** — Frontend connected to backend
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React 19, Vite, FontAwesome, Google Fonts (Inter)
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB, Mongoose ODM
-- **Authentication:** JSON Web Tokens (JWT), Bcrypt.js
-- **Payment Processing:** Stripe API
+| Layer | Technology |
+|-------|------------|
+| **Frontend** | React 19, Vite, Redux Toolkit, React Router DOM |
+| **Backend** | Node.js, Express.js |
+| **Database** | MongoDB, Mongoose ODM |
+| **Authentication** | JWT (JSON Web Tokens), bcryptjs |
+| **Styling** | CSS3, FontAwesome, Google Fonts (Inter) |
+| **Payment** | Stripe API (configured) |
 
 ---
 
-## 🏁 Getting Started
+## 📁 Project Structure
+
+```
+supershop/
+├── client/                          # React Frontend (Vite)
+│   ├── src/
+│   │   ├── components/              # Reusable components
+│   │   │   └── ProtectedRoute.jsx   # Route protection wrapper
+│   │   ├── pages/
+│   │   │   ├── Home.jsx             # Main shop page
+│   │   │   ├── Login.jsx            # User login page
+│   │   │   └── Register.jsx         # User registration page
+│   │   ├── services/
+│   │   │   └── api.js               # Axios API configuration
+│   │   ├── store/
+│   │   │   ├── index.js             # Redux store configuration
+│   │   │   ├── authSlice.js         # Authentication state
+│   │   │   └── cartSlice.js         # Cart state
+│   │   ├── AdminDashboard.jsx       # Admin panel component
+│   │   ├── admin.css                # Admin dashboard styles
+│   │   ├── App.jsx                  # Main app with routing
+│   │   ├── App.css                  # App-specific styles
+│   │   ├── index.css                # Global styles
+│   │   └── main.jsx                 # React entry point
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.js
+│
+├── server/                          # Express Backend API
+│   ├── config/
+│   │   └── db.js                    # MongoDB connection
+│   ├── controllers/
+│   │   ├── authController.js        # Login/register logic
+│   │   ├── cartController.js        # Cart operations
+│   │   ├── orderController.js       # Order & Stripe logic
+│   │   └── productController.js     # Product CRUD
+│   ├── middleware/
+│   │   ├── authMiddleware.js        # JWT verification
+│   │   └── errorHandler.js          # Error handling
+│   ├── models/
+│   │   ├── Cart.js                  # Cart schema
+│   │   ├── Order.js                 # Order schema
+│   │   ├── Product.js               # Product schema
+│   │   └── User.js                  # User schema
+│   ├── routes/
+│   │   ├── auth.js                  # Auth API routes
+│   │   ├── cart.js                  # Cart API routes
+│   │   ├── orders.js                # Order API routes
+│   │   └── products.js              # Product API routes
+│   ├── utils/
+│   │   ├── generateToken.js         # JWT token generator
+│   │   └── stripe.js                # Stripe configuration
+│   ├── .env                         # Environment variables
+│   ├── package.json
+│   ├── seed.js                      # Database seeder
+│   └── server.js                    # Express entry point
+│
+├── README.md
+└── package.json                     # Root package (optional)
+```
+
+---
+
+## 🚀 Quick Start
 
 ### Prerequisites
-Make sure you have the following installed on your machine:
-- [Node.js](https://nodejs.org/) (v18 or newer)
-- [MongoDB](https://www.mongodb.com/) (running locally or via MongoDB Atlas)
+
+- **Node.js** (v18 or newer)
+- **MongoDB** (running locally or MongoDB Atlas)
+- **npm** or **yarn**
 
 ---
 
-### 1. Start the Backend Server
+### Step 1: Clone & Install Dependencies
 
-1. Open a terminal and navigate to the `server` directory:
-   ```bash
-   cd supershop/server
-   ```
+```bash
+# Navigate to project
+cd supershop
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+# Install backend dependencies
+cd server
+npm install
 
-3. Ensure your `.env` file contains your configuration:
-   ```env
-   MONGODB_URI=mongodb://localhost:27017/supershop
-   JWT_SECRET=supershop_jwt_secret_key_2024
-   STRIPE_SECRET_KEY=sk_test_your_stripe_key
-   PORT=5001
-   NODE_ENV=development
-   ```
-
-4. Start the server:
-   ```bash
-   npm start
-   ```
-   *The server will start on [http://localhost:5001](http://localhost:5001)*
+# Install frontend dependencies
+cd ../client
+npm install
+```
 
 ---
 
-### 2. Start the Frontend Client
+### Step 2: Configure Environment
 
-1. Open a **new** terminal window/tab and navigate to the `client` directory:
-   ```bash
-   cd supershop/client
-   ```
+The backend already has a `.env` file with these defaults:
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+```env
+MONGODB_URI=mongodb://localhost:27017/supershop
+JWT_SECRET=supershop_jwt_secret_key_2024
+STRIPE_SECRET_KEY=sk_test_your_stripe_key
+PORT=5001
+NODE_ENV=development
+```
 
-3. Start the Vite development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open your browser and visit:
-   ```
-   http://localhost:5173/
-   ```
+> **Note:** If Port 5000 is taken (common on macOS), the server runs on **Port 5001**.
 
 ---
 
-## 🔌 API Endpoints Summary
+### Step 3: Seed the Database
 
-### Authentication (`/api/auth`)
-- `POST /api/auth/register` — Register a new user
-- `POST /api/auth/login` — Authenticate user and obtain JWT
-- `GET /api/auth/me` — Fetch profile of current logged-in user *(Protected)*
+Create an admin user and sample products:
 
-### Products (`/api/products`)
-- `GET /api/products` — Retrieve all products (supports `?keyword=` and `?category=`)
-- `GET /api/products/:id` — Retrieve a single product by ID
-- `POST /api/products` — Create a new product *(Admin only)*
-- `PUT /api/products/:id` — Update an existing product *(Admin only)*
-- `DELETE /api/products/:id` — Delete a product *(Admin only)*
+```bash
+cd ../server
+npm run seed
+```
 
-### Cart (`/api/cart`) *(All Protected)*
-- `GET /api/cart` — Fetch user's cart
-- `POST /api/cart/add` — Add item to cart
-- `PUT /api/cart/update/:itemId` — Update quantity of an item
-- `DELETE /api/cart/remove/:itemId` — Remove item from cart
-- `DELETE /api/cart/clear` — Clear entire cart
+**Expected output:**
+```
+✅ Database seeded successfully!
 
-### Orders & Payment (`/api/orders`) *(All Protected)*
-- `POST /api/orders` — Create a new order
-- `GET /api/orders/myorders` — Get current user's order history
-- `GET /api/orders/:id` — Get specific order details
-- `POST /api/orders/create-payment-intent` — Generate Stripe payment intent client secret
-- `PUT /api/orders/:id/pay` — Mark order as paid
-- `GET /api/orders` — View all orders *(Admin only)*
-- `PUT /api/orders/:id/status` — Update order shipping status *(Admin only)*
+📧 Admin Login:
+   Email: admin@supershop.com
+   Password: admin123
+
+📧 User Login:
+   Email: user@supershop.com
+   Password: user123
+```
+
+---
+
+### Step 4: Run the Application
+
+**Terminal 1 — Backend (Port 5001):**
+```bash
+cd supershop/server
+npm start
+```
+
+**Terminal 2 — Frontend (Port 5173):**
+```bash
+cd supershop/client
+npm run dev
+```
+
+---
+
+### Step 5: Open in Browser
+
+Navigate to: **http://localhost:5173**
+
+---
+
+## 🔐 Login Credentials
+
+After running `npm run seed`, you can log in with these accounts:
+
+| Role | Email | Password | Access |
+|------|-------|----------|--------|
+| **Admin** | `admin@supershop.com` | `admin123` | Full admin dashboard at `/admin` |
+| **User** | `user@supershop.com` | `user123` | Shop and add to cart |
+
+---
+
+## 🧩 Key Features
+
+### 👤 User Features
+- User registration and login
+- Browse products by category
+- Add items to cart (requires login)
+- View deals with live countdown timer
+- Newsletter subscription
+
+### 🛠️ Admin Features
+- **Dashboard** — Overview stats, system health, recent orders
+- **Products** — Add, edit, delete products with stock management
+- **Orders** — View all orders, update status (Pending → Processing → Shipped → Delivered)
+- **Users** — View and manage user accounts
+
+### 🔌 API Endpoints
+
+**Auth:**
+- `POST /api/auth/register` — Register new user
+- `POST /api/auth/login` — Login and get JWT
+- `GET /api/auth/me` — Get current user (protected)
+
+**Products:**
+- `GET /api/products` — List all products
+- `POST /api/products` — Create product (admin)
+- `PUT /api/products/:id` — Update product (admin)
+- `DELETE /api/products/:id` — Delete product (admin)
+
+**Cart (Protected):**
+- `GET /api/cart` — Get user's cart
+- `POST /api/cart/add` — Add item
+- `PUT /api/cart/update/:id` — Update quantity
+- `DELETE /api/cart/remove/:id` — Remove item
+
+**Orders (Protected):**
+- `GET /api/orders/myorders` — User's orders
+- `POST /api/orders` — Create order
+- `POST /api/orders/create-payment-intent` — Stripe payment
+
+---
+
+## 📸 Screenshots
+
+The frontend features:
+- Responsive hero slider with 3 promotional slides
+- Trust badges (Free Shipping, Secure Payment, etc.)
+- Category grid with hover effects
+- Product cards with ratings and prices
+- Tab-filtered new arrivals section
+- Testimonials carousel
+- Newsletter subscription form
+- Full footer with links
+
+The admin dashboard features:
+- Dark sidebar navigation
+- KPI stat cards with metrics
+- System health monitoring
+- Product management table with CRUD
+- Order management with status dropdowns
+- User management with role badges
 
 ---
 
 ## 📝 License
-This project is open-source and available under the [MIT License](LICENSE).
+
+MIT License — feel free to use this project for learning or commercial purposes.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+---
+
+**Built with ❤️ using MERN Stack**
